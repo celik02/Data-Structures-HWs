@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1640289145 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\src\student.cpp
+	"Student.h"
+	<iostream>
+
+1640281404 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\include\student.h
+	<iostream>
+
+1640437219 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cstring>
+	<sstream>
+	<stdlib.h>
+	"Student.h"
+	"Section_Stack.h"
+	"WaitingQueue.h"
+
+1640282003 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\src\section_stack.cpp
+	"Section_Stack.h"
+
+1640277401 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\include\section_stack.h
+	"Student.h"
+
+1640278784 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\src\waitingqueue.cpp
+	"WaitingQueue.h"
+
+1640278733 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw2\include\waitingqueue.h
+	"Student.h"
+

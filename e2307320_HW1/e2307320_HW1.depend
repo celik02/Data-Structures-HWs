@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1637431618 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw1\main.cpp
+	<iostream>
+	"Student.h"
+	"Course.h"
+
+1637425524 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw1\include\student.h
+	<string>
+
+1637426003 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw1\src\student.cpp
+	"Student.h"
+	<iostream>
+
+1637427327 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw1\include\course.h
+	"Student.h"
+
+1637427365 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw1\src\course.cpp
+	"Course.h"
+	<iostream>
+

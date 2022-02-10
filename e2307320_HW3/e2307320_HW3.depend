@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1642400740 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw3\e2307320_hw3\src\linked_list_schedular.cpp
+	"Linked_List_Schedular.h"
+
+1642870259 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw3\e2307320_hw3\include\linked_list_schedular.h
+
+1642870493 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw3\e2307320_hw3\main.cpp
+	<iostream>
+	<fstream>
+	"Linked_List_Schedular.h"
+	"BST.h"
+
+1642454231 source:c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw3\e2307320_hw3\src\bst.cpp
+	"BST.h"
+
+1642870281 c:\users\emrullah\desktop\2021_fall\ee441\hws\e2307320_hw3\e2307320_hw3\include\bst.h
+
