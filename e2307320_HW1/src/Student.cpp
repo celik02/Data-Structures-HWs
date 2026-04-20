@@ -1,3 +1,5 @@
+// Student.cpp — getter/setter implementations and the weighted-average calculation.
+
 #include "Student.h"
 #include <iostream>
 
@@ -8,7 +10,8 @@ using namespace std;
 //}
 Student::Student()
 {
-
+    // Body is empty because member variables already have in-class default values
+    // (e.g. int ID = 9999) defined in the header — those run automatically.
 }
 void Student::setID(int id)
 {
@@ -43,11 +46,13 @@ string Student::getSurname()
 
 void Student::setQuizes(float scores[])
 {
+    // Arrays cannot be assigned with '=' — must copy element by element.
     for(int i=0; i<4; i++){
         quiz_scores[i] = scores[i];
     }
 }
 
+// Returns a raw pointer to the internal array — fast, but lets the caller modify elements.
 float* Student::getQuizes()
 {
     return quiz_scores;
@@ -77,13 +82,16 @@ float Student::getFinal(void)
 }
 float Student::overallCourseScore()
 {
+    // Weighted average: overall = final*(wF/100) + quiz_avg*(wQ/100) + hw_avg*(wH/100)
+    // Dividing by 400 instead of 100 normalizes the sum of 4 quizzes in one step:
+    //   quiz_avg * (weightQ/100) = sum(quizzes)/4 * (weightQ/100) = sum(quizzes)*weightQ/400
     float avarage = final_score*weightF/100;
     for(int i =0; i<4; i++){
         avarage += quiz_scores[i]*weightQ/400;
     }
 
     for(int j = 0; j<3; j++){
-        avarage += hw_scores[j]*weightH/300;
+        avarage += hw_scores[j]*weightH/300;  // same idea: weightH/300 = (weightH/100)/3
     }
 
     return avarage;

@@ -1,3 +1,5 @@
+// Course.cpp — manages a fixed array of Student pointers and course-wide statistics.
+
 #include "Course.h"
 #include <iostream>
 using namespace std;
@@ -42,13 +44,15 @@ void Course::updateWeigths(int weightQ_, int weightHW_, int weightF_)
 //for given id pointer to that student is returned
 Student *Course::getStudentInfo(int student_id)
 {
+    // Range-based for loop (C++11): 'auto' deduces the type (Student*) automatically.
     for(auto student: students)
     {
         if (student->getID() == student_id)
             return student;
     }
 
-    //instead of initializing over and over just one initialization will be done
+    // 'static' local variable: initialized only once across all calls.
+    // Avoids allocating a new dummy object every time an ID is not found.
     static Student *empty_student = new Student;
     empty_student->setID(99999);
     return empty_student;
@@ -63,7 +67,8 @@ Student** Course::getStudentInfo()
 
 float* Course::calculateAverage()
 {
-
+    // Allocates the result on the heap with 'new' so it outlives this function's stack frame.
+    // The caller must call delete[] on the returned pointer to avoid a memory leak.
     float quiz_av = 0;
     float hw_av = 0;
     float overall = 0;

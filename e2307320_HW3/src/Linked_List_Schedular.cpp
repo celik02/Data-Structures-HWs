@@ -1,3 +1,5 @@
+// Linked_List_Schedular.cpp — pointer-manipulation operations for a singly linked list.
+
 #include "Linked_List_Schedular.h"
 
 Linked_List_Schedular::Linked_List_Schedular(int processID_, int arrivalTime_, int runTime_, int priority_,  Linked_List_Schedular* nextNode_):
@@ -6,6 +8,11 @@ Linked_List_Schedular::Linked_List_Schedular(int processID_, int arrivalTime_, i
 
 }
 
+// InsertAfter inserts node 'p' immediately after 'this'.
+// Order of pointer assignments matters — do NOT swap the two lines:
+//   1. p->nextNode = nextNode   →  p now points to what comes after 'this'
+//   2. nextNode    = p          →  'this' now points to p
+// If you did step 2 first, nextNode (the original successor) would be lost.
 void Linked_List_Schedular::InsertAfter(Linked_List_Schedular* p)
 {
     p->nextNode = nextNode;

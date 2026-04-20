@@ -54,6 +54,9 @@ BST* getTreeNode(Node  &item, BST* lptr=nullptr, BST* rptr=nullptr)
 //for linked list insertion function
 //to make code more robust, I used function overloading. For linked list and BST I use same function name.
 //how RQ initialized determines which function to be used.
+// LINKED LIST INSERT — O(n): must scan from head to find the right position by priority.
+// 'Linked_List_Schedular**' is a pointer-to-pointer so the function can update the head pointer
+// itself when the new node needs to go at the very front.
 void InsertIntoRQ(Node& tempProcess, Linked_List_Schedular** linked_list_head, int* insertion_count)
 {
         //in this function processes are inserted into linked list wrt to their priority order.
@@ -97,6 +100,8 @@ void InsertIntoRQ(Node& tempProcess, Linked_List_Schedular** linked_list_head, i
 }
 
 //for tree function overloading
+// BST INSERT — O(log n) average: at each node, go left if new priority is smaller, right if larger.
+// Each step halves the remaining search space, like binary search.
 void InsertIntoRQ(Node &tempProcess, BST** head, int* insertion_count)
 {
         //this function gets processes and inserts them into binary search tree wrt to their priority order.
@@ -110,7 +115,7 @@ void InsertIntoRQ(Node &tempProcess, BST** head, int* insertion_count)
             if(temp->priority > tempProcess.priority)
                 {
                     tempPrev = temp;
-                    temp = temp->left;
+                    temp = temp->left;   // go left: new node has smaller priority
                     (*insertion_count)++;
                     left_way = true;
 
@@ -118,7 +123,7 @@ void InsertIntoRQ(Node &tempProcess, BST** head, int* insertion_count)
             else if(temp->priority < tempProcess.priority)
                 {
                     tempPrev = temp;
-                    temp = temp->right;
+                    temp = temp->right;  // go right: new node has larger priority
                     (*insertion_count)++;
                     left_way = false;
                 }
@@ -155,6 +160,8 @@ Node* GetHighPriorityRQ(Linked_List_Schedular** head, int* traversel_count)
 }
 
 //BST traversel
+// The highest-priority (smallest priority value) node is always the leftmost node.
+// Walking left until nullptr finds it in O(log n) on average.
 Node* GetHighPriorityRQ(BST** head, int* counter)
 {
     //returns node with the highest priority in the BST
@@ -162,7 +169,7 @@ Node* GetHighPriorityRQ(BST** head, int* counter)
     BST* temp = *head;
     BST* tempPrev = *head;
     (*counter)++;
-    while(temp->left!=nullptr)
+    while(temp->left!=nullptr)  // keep going left until we hit the minimum
     {
         tempPrev = temp;
         temp = temp->left;
@@ -207,7 +214,12 @@ int main()
     //for Linked list
 //    Linked_List_Schedular* RQ = nullptr;
 //    for tree uncomment below
+    // RQ (Ready Queue) holds processes waiting for the CPU.
+    // Swap the type (BST* ↔ Linked_List_Schedular*) to compare both implementations.
+    // Function overloading makes InsertIntoRQ and GetHighPriorityRQ work for either type.
     BST* RQ = nullptr;
+    // Loop runs one tick per iteration. Continues until all processes have arrived,
+    // the CPU finishes, and the ready queue is empty.
     while(processIndex < numProcesses || CPUBusy == true || RQ != nullptr)
     {
         //implementation of process schedular
